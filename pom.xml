@@ -9,13 +9,13 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <name>${project.artifactId}</name>
     <description>Java 进阶之路</description>
     <!-- 项目创建年份，4位数字。当产生版权信息时需要使用这个值 -->
     <inceptionYear>2018</inceptionYear>
 
     <!-- 子工程 -->
     <modules>
-        <module></module>
         <module>basicKnowledge</module>
     </modules>
 
@@ -23,8 +23,50 @@
         <start-class></start-class>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- jar包的 中央仓库 -->
+    <repositories>
+    </repositories>
+
+    <!-- 插件的 中央仓库 -->
+    <pluginRepositories>
+    </pluginRepositories>
+
+    <!-- 发布管理 -->
+    <distributionManagement>
+        <!-- 稳定版管理器 -->
+        <!--<repository></repository>-->
+
+        <!-- 快照管理器 -->
+        <!--<snapshotRepository></snapshotRepository>-->
+    </distributionManagement>
+
     <build>
-        <finalName>basicKnowledge</finalName>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <!-- Maven可以区别对待Java代码文件和资源文件，默认的主资源文件目录是src/main/resources，我们可以通过这个插件实现资源文件过滤 -->
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/application*.yml</include>
+                    <include>**/application*.yaml</include>
+                    <include>**/application*.properties</include>
+                    <include>**/bootstrap*.yml</include>
+                    <include>**/bootstrap*.yaml</include>
+                    <include>**/bootstrap*.properties</include>
+                    <include>**/logback.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
