@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wangwei.forward</groupId>
+    <artifactId>javaForward</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <description>Java 进阶之路</description>
+    <!-- 项目创建年份，4位数字。当产生版权信息时需要使用这个值 -->
+    <inceptionYear>2018</inceptionYear>
+
+    <!-- 子工程 -->
+    <modules>
+        <module></module>
+        <module>basicKnowledge</module>
+    </modules>
+
+    <properties>
+        <start-class></start-class>
+    </properties>
+
+    <build>
+        <finalName>basicKnowledge</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8 </target>
+                    <optimize>true</optimize>
+                    <compilerArgs>
+                        <compilerArg>-verbose</compilerArg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <!-- Maven本身并不是一个单元测试框架，它只是在构建执行到特定生命周期阶段的时候，通过插件来执行JUnit或者TestNG的测试用例 -->
+            <!-- 默认情况下，surefire会执行文件名以Test开头或结尾的测试用例，或者是以TestCase结尾的测试用例 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7.2</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <tapestry.execution-mode>Qa</tapestry.execution-mode>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+            <!-- Run the application using "mvn jetty:run" -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.16</version>
+                <configuration>
+                    <!-- Log to the console. -->
+                    <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+                        <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug
+                             that prevents the requestLog from being set. -->
+                        <append>true</append>
+                    </requestLog>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>tapestry.execution-mode</name>
+                            <value>development</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- 项目文档 -->
+    <url>https://github.com/Assassin199108/javaForward</url>
+
+    <!-- 项目的问题管理系统(Bugzilla, Jira, Scarab,或任何你喜欢的问题管理系统)的名称和URL，本例为 jira -->
+    <issueManagement>
+        <system>Jira</system>
+        <url>https://github.com/Assassin199108</url>
+    </issueManagement>
+
+    <!-- 构建完成时，需要通知的开发者/用户的配置项。包括被通知者信息和通知条件（错误，失败，成功，警告） -->
+    <ciManagement>
+        <system>Jira</system>
+        <url>https://github.com/Assassin199108</url>
+        <notifiers>
+            <notifier>
+                <!-- 通知类型 -->
+                <type>mail</type>
+                <!-- 发生错误时是否通知 -->
+                <sendOnError>true</sendOnError>
+                <!-- 构建失败时是否通知 -->
+                <sendOnFailure>true</sendOnFailure>
+                <!-- 构建成功时是否通知 -->
+                <sendOnSuccess>true</sendOnSuccess>
+                <!-- 发生警告时是否通知 -->
+                <sendOnWarning>false</sendOnWarning>
+                <!-- 通知发送到哪里 -->
+                <address>ww18758302341@sina.com</address>
+                <!-- 扩展配置项 -->
+                <configuration>
+                    <address>ww18758302341@sina.com</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
+    <!-- 项目相关邮件列表信息 -->
+    <mailingLists>
+        <mailingList>
+            <!-- 邮件的名称 -->
+            <name>ww</name>
+            <!-- 发送邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 -->
+            <post>ww18758302341@sina.com</post>
+            <!-- 订阅邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 -->
+            <subscribe>ww18758302341@sina.com</subscribe>
+            <!-- 取消订阅邮件的地址或链接，如果是邮件地址，创建文档时，mailto: 链接会被自动创建 -->
+            <unsubscribe>ww18758302341@sina.com</unsubscribe>
+            <!-- 你可以浏览邮件信息的URL -->
+            <archive>https://github.com/Assassin199108</archive>
+        </mailingList>
+    </mailingLists>
+
+    <!-- 项目开发者列表 -->
+    <developers>
+        <!-- 某个项目开发者的信息 -->
+        <developer>
+            <!-- SCM里项目开发者的唯一标识符 -->
+            <id>wang</id>
+            <!-- 项目开发者的全名 -->
+            <name>ww</name>
+            <!-- 项目开发者的email -->
+            <email>ww18758302341@sina.com</email>
+            <!-- 项目开发者的主页的URL -->
+            <url>https://github.com/Assassin199108</url>
+            <!-- 项目开发者在项目中扮演的角色，角色元素描述了各种角色 -->
+            <roles>
+                <role>manager</role>
+            </roles>
+            <!-- 项目开发者所属组织 -->
+            <organization>no company</organization>
+            <!-- 项目开发者属性，如即时消息如何处理等 -->
+            <properties>
+                <dept> No </dept>
+            </properties>
+            <!-- 项目开发者所在时区， -11到12范围内的整数。 -->
+            <timezone>8</timezone>
+        </developer>
+    </developers>
+    <!-- 项目的其他贡献者。参见developers/developer元素 -->
+    <contributors></contributors>
+
+</project>
