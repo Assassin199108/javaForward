@@ -1,6 +1,4 @@
-.settings/*
 bin/
-*/bin/*
 */.settings/
 */log/
 */target/
@@ -14,8 +12,6 @@ build/
 .gradle/
 gradle/
 *.war
-*rebel.xml
-jlwork.log*
 cdl-client/
 config-client/
 tmq-client/
@@ -23,8 +19,4 @@ monitor/
 classes
 out
 */out/*
-.DS_Store
-*/.DS_Store
 out/
-gradlew
-gradlew.bat

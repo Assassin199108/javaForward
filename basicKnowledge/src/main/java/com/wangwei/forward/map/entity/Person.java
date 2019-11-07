@@ -1,5 +1,6 @@
 package com.wangwei.forward.map.entity;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
