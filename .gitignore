@@ -27,3 +27,8 @@ nbdist/
 
 */build/
 */gradle/
+.gradle/
+build.gradle
+gradle_module_1/
+settings.gradle
+src/
