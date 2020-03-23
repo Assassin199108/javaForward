@@ -1,10 +1,5 @@
 .settings/*
 bin/
-*/bin/*
-*/.settings/
-*/log/
-*/target/
-*/build/
 build/
 .project
 .classpath
