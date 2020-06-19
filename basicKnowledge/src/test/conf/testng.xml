@@ -2,7 +2,7 @@
 <suite name="basicKnowledge Application Test Suite" annotations="1.5">
     <test name="Unit Tests">
         <packages>
-            <package name="com.wangwei.forward"/>
+            <package name="com.wangwei.basic"/>
         </packages>
     </test>
 </suite>

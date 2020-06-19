@@ -11,7 +11,7 @@
         of where to look for pages, components and mixins.
         -->
         <param-name>tapestry.app-package</param-name>
-        <param-value>com.wangwei.forward</param-value>
+        <param-value>com.wangwei.basic</param-value>
     </context-param>
 
     <!--
@@ -22,13 +22,13 @@
     <context-param>
         <param-name>tapestry.development-modules</param-name>
         <param-value>
-            com.wangwei.forward.services.DevelopmentModule
+            com.wangwei.basic.services.DevelopmentModule
         </param-value>
     </context-param>
     <context-param>
         <param-name>tapestry.qa-modules</param-name>
         <param-value>
-            com.wangwei.forward.services.QaModule
+            com.wangwei.basic.services.QaModule
         </param-value>
     </context-param>
 
