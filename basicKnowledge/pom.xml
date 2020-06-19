@@ -37,13 +37,6 @@
             <artifactId>disruptor</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.koloboke/koloboke-api-jdk8 -->
-        <dependency>
-            <groupId>com.koloboke</groupId>
-            <artifactId>koloboke-api-jdk8</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
         <dependency>
             <groupId>it.unimi.dsi</groupId>
             <artifactId>fastutil</artifactId>

@@ -13,7 +13,7 @@ public class MyClassLoader extends ClassLoader {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
-        Connection connection = DriverManager.getConnection("jdbc:mysql://webuy-devmysql-nei.mysql.rds.aliyuncs.com:3306/sesame?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull", "sesame", "_qIiCIESVnDFQ");
+        Connection connection = DriverManager.getConnection("");
         System.out.println(Driver.class.getClassLoader());
         System.out.println(com.mysql.jdbc.Driver.class.getClassLoader());
 
