@@ -19,6 +19,7 @@
         <module>basicKnowledge</module>
         <module>forwardKnowledge</module>
         <module>springKnowledge</module>
+        <module>flink</module>
     </modules>
 
     <properties>
@@ -33,6 +34,7 @@
         <fastjson_version>1.2.70</fastjson_version>
         <disruptor_version>3.4.2</disruptor_version>
         <fast_util_version>7.2.1</fast_util_version>
+        <flink_version>1.10.1</flink_version>
     </properties>
 
     <dependencyManagement>
@@ -129,6 +131,12 @@
                 <artifactId>fastutil</artifactId>
                 <version>${fast_util_version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-streaming-java_2.12</artifactId>
+                <version>${flink_version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -219,6 +227,23 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <!-- Maven本身并不是一个单元测试框架，它只是在构建执行到特定生命周期阶段的时候，通过插件来执行JUnit或者TestNG的测试用例 -->
             <!-- 默认情况下，surefire会执行文件名以Test开头或结尾的测试用例，或者是以TestCase结尾的测试用例 -->
             <!--<plugin>

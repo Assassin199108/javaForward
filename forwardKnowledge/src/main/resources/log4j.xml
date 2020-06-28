@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="null">
+
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="defaultAppender" />
+        <appender-ref ref="consoleAppender" />
+    </root>
+
+    <!-- common-default.log -->
+        <appender name="defaultAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="/opt/flink/log/common-default.log" />
+        <param name="append" value="true" />
+        <param name="encoding" value="UTF-8" />
+        <param name="threshold" value="INFO" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c - %m%n" />
+        </layout>
+    </appender>
+
+</log4j:configuration>

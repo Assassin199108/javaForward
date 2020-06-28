@@ -1,11 +1,8 @@
-package com.wangwei.basic.netty;
+package com.wangwei.forward.netty.outbound;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
 
 import java.net.SocketAddress;
-import java.nio.ByteBuffer;
 import java.util.Scanner;
 
 public class MyOutboundChannelHandler extends ChannelOutboundHandlerAdapter {
@@ -25,10 +22,7 @@ public class MyOutboundChannelHandler extends ChannelOutboundHandlerAdapter {
             Scanner scanner = new Scanner(System.in);
             while (true) {
                 String next = scanner.next();
-                PooledByteBufAllocator allocator = new PooledByteBufAllocator();
-                ByteBuf byteBuf = allocator.directBuffer(1024);
-                byteBuf.writeBytes(next.getBytes());
-                channel.writeAndFlush(byteBuf);
+                channel.writeAndFlush(next);
             }
         };
         new Thread(runnable).start();
